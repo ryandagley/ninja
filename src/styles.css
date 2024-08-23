@@ -1,0 +1,114 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #000; /* Black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'CustomFont', sans-serif;
+  overflow: hidden; /* Prevents any overflow issues */
+}
+
+.ninja-eyes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5vw; /* Space between the two eyes, responsive */
+  margin-bottom: 5vh; /* Space between eyes and text, responsive */
+}
+
+.eye {
+  width: 15vw; /* Responsive width */
+  height: 15vw; /* Responsive height */
+  max-width: 100px; /* Max size for larger screens */
+  max-height: 100px; /* Max size for larger screens */
+  background-color: #fff; /* White eye color */
+  border-radius: 50%; /* Makes the eyes perfectly round */
+  position: relative;
+  animation: blink 4s infinite; /* Adjusted animation timing */
+}
+
+.star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20%;
+  height: 20%;
+  background-color: red;
+  clip-path: polygon(
+    50% 0%,
+    60% 40%,
+    100% 50%,
+    60% 60%,
+    50% 100%,
+    40% 60%,
+    0% 50%,
+    40% 40%
+  ); /* Star shape */
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.1s ease-in-out;
+}
+
+.eye .star {
+  width: 120%;
+  height: 120%;
+}
+
+.eye::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000; /* Black background color */
+  border-radius: 50%; /* Match the round shape */
+  top: 0;
+  left: 0;
+  transform: scaleY(0);
+  transform-origin: center;
+  animation: eyelid 2s infinite;
+}
+
+.ninja-text {
+  color: #fff;
+  font-size: 4vw; /* Responsive font size */
+  max-font-size: 2rem; /* Max font size for larger screens */
+  text-align: center;
+  opacity: 0; /* Initially hidden */
+  animation: showText 12s infinite;
+}
+
+@keyframes eyelid {
+  0%,
+  85%,
+  100% {
+    transform: scaleY(0);
+  }
+  90%,
+  95% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes showText {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  45%,
+  55% {
+    opacity: 1;
+  }
+  60%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('njnaruto.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
